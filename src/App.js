@@ -2,6 +2,7 @@ import React from "react";
 import { Route, Switch,Router } from "react-router-dom";
 import Navbar from "./components/layout/navbar";
 import Signup from "./components/signupPage";
+import TripComponent from './components/createTrip';
 import history from './components/history';
 
 const App = () => {
@@ -9,9 +10,10 @@ const App = () => {
     <div className="container-fluid">
       <Router history={history}>
       <Navbar />
-      <Switch>
-      <Route path="/" exact component={Signup} />
-      </Switch>
+        <Switch>
+          <Route path="/" exact component={Signup} />
+          <Route path="/trip" component={TripComponent} />
+        </Switch>
       </Router>
     </div>
   );
