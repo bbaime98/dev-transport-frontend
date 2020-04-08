@@ -1,0 +1,26 @@
+.signup-form{
+    width: 100%;
+    max-width: 300px;
+    padding: 15px;
+    margin: auto;
+    height: 100%;
+}
+.modification{
+    display: inline-block;
+    margin-top: 200px;
+    margin-left: 8em;
+}
+.red{
+    color: red;
+}
+
+.bg-navbar {
+    background-color: #f7f7f7;
+} 
+
+.active {
+    background-color: #0bbfbc;
+}
+.bg{ 
+    background-color: #0bbfbc;
+}
