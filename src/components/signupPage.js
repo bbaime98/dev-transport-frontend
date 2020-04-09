@@ -8,6 +8,9 @@ import history from './history';
 const SignupComponent = (props) => {
 
   const { register, handleSubmit, errors } = useForm();
+  const token = localStorage.getItem('token')
+  token && history.push('/dashboard');
+
   const onSubmit = async data => {
     const output = await props.signUp(data);
     if (output.payload.status === 201) {
@@ -15,10 +18,9 @@ const SignupComponent = (props) => {
     }
   }
   const [emailError, setEmailError] = useState(null)
-  useEffect(() => {
-    localStorage.removeItem('token')
-
-  }, [])
+  // useEffect(() => {
+  //   localStorage.removeItem('token')
+  // }, [])
   useEffect(() => {
     if (props.user.error) {
       setEmailError(props.user.error.message)

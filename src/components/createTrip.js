@@ -7,6 +7,8 @@ import history from './history';
  
 const TripComponent = (props) => {
  const { register, handleSubmit } = useForm();
+ const token = localStorage.getItem('token')
+ !token && history.push('/login');
  const onSubmit = async data => {
   const output =  await props.createTrip(data);
   if(output.status === 201) return history.push('/dashboard');
