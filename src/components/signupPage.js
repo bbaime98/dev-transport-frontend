@@ -4,32 +4,43 @@ import { signUp } from '../redux/actions/auth';
 import { connect } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import history from './history';
+import bus from '../bus2.png';
 
 const SignupComponent = (props) => {
 
   const { register, handleSubmit, errors } = useForm();
+  const token = localStorage.getItem('token')
+  token && history.push('/dashboard');
+
   const onSubmit = async data => {
     const output = await props.signUp(data);
     if (output.payload.status === 201) {
       history.push('/trip');
     }
-  }
-  const [emailError, setEmailError] = useState(null)
-  useEffect(() => {
-    localStorage.removeItem('token')
-
-  }, [])
-  useEffect(() => {
     if (props.user.error) {
       setEmailError(props.user.error.message)
     }
-  }, [props.user])
+  }
+  const [emailError, setEmailError] = useState(null)
+  // useEffect(() => {
+  //   localStorage.removeItem('token')
+  // }, [])
+  // useEffect(() => {
+  //   if (props.user.error) {
+  //     setEmailError(props.user.error.message)
+  //   }
+  // }, [props.user])
 
   return (
-    <>
-    <h4 className="text-center float-left mt-5 ml-5
-     text-info">Welcome to DevTransport!</h4>
-    <div className="signup-form mr-5 mt-4 bg-form">
+    <div className="container">
+      <div className='row'> 
+      <div className='col-sm-6'> 
+        <p className="text-info big-text">Welcome to DevTransport!</p>
+        <p className='text-center border shadow short-text rounded'>The smartest transport services </p>
+        <img src={bus} className='img-fluid' alt='car' />
+     </div>
+     <div className='col-sm-6'> 
+    <div className="signup-form mr-5 mt-5 bg-form">
       <p className="red"> {emailError ? 'Email already exist' : ''}</p>
       <form className="text-center border border-light p-3 shadow-lg " onSubmit={handleSubmit(onSubmit)}>
 
@@ -54,8 +65,10 @@ const SignupComponent = (props) => {
         <button className="btn btn-info btn-block" type="submit">Sign up
     </button>
       </form>
+      </div>
     </div>
-    </>
+    </div>
+    </div>
   )
 }
 const MapStateToProps = ({ user }) => {
