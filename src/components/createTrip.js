@@ -9,10 +9,7 @@ const TripComponent = (props) => {
  const { register, handleSubmit } = useForm();
  const onSubmit = async data => {
   const output =  await props.createTrip(data);
-   if (output.payload.status === 200){
-     history.push('/dashboard');
-   }
- 
+  if(output.status === 201) return history.push('/dashboard');
  }
  const [tripError, setTripError] = useState('')
  
