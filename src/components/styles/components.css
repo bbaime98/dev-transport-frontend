@@ -24,3 +24,19 @@
 .bg{ 
     background-color: #0bbfbc;
 }
+
+.big-text{
+    font-size: 35px;
+    padding: 20px 0;
+    margin-top: 30px;
+}
+.img-responsive{
+width: 600px;
+}
+.short-text {
+    font-size: 20px;
+    background-color: #0bbfbc;
+    color: white;
+    width: 300px ;
+    text-align: center;
+}
